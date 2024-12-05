@@ -259,7 +259,7 @@ header
 
 .main-nav .logo img {
   width: 80px;
-  height: 80px; /* Explicitly set the height */
+  height: 70px; /* Explicitly set the height */
 }
 
 
@@ -2949,3 +2949,43 @@ section.FAQ {
   }
 }
 
+
+/* Team Member Styling */
+.team-member {
+  text-align: center;
+}
+
+.team-photo {
+  width: 200px; /* Increased width */
+  height: 250px; /* Increased height for rectangular appearance */
+  overflow: hidden; /* Ensures the image doesn't exceed the bounds */
+  border-radius: 10px; /* Adds slight rounding to edges */
+  margin: 0 auto 10px; /* Centers the photo and adds spacing below */
+}
+
+.team-photo img {
+  width: 100%; /* Ensures the image fits within the photo dimensions */
+  height: 100%; /* Ensures the image fills the photo dimensions */
+  object-fit: cover; /* Maintains aspect ratio and prevents distortion */
+}
+
+.team-member h5 {
+  font-weight: bold;
+  margin: 15px 0 10px; /* Adds spacing between the name and the photo */
+}
+
+.team-member p {
+  font-size: 1rem; /* Adjust font size for better readability */
+  color: #333; /* Adjust the text color as needed */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .team-photo {
+    width: 150px; /* Adjust width for smaller screens */
+    height: 200px; /* Adjust height for smaller screens */
+  }
+  .section-title {
+    font-size: 2rem; /* Adjust title font size for smaller screens */
+  }
+}
