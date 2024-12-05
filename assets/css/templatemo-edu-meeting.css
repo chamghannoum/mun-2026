@@ -696,15 +696,19 @@ banner
   align-items: center; /* Vertically center all content */
 }
 
-#bg-image {
+.bg-image {
+  background-image: url(../images/uni2.webp); /* Replace with your actual image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-  height: 100vh; /* Full viewport height */
-  object-fit: cover; /* Maintain aspect ratio and cover the area */
-  position: absolute; /* Overlay content */
+  height: 100vh;
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: -1; /* Place behind the overlay */
+  
 }
+
 
 
 #bg-video {
@@ -723,7 +727,7 @@ banner
 .video-overlay {
   justify-content: center;
     position: absolute;
-    background-color: rgba(31,39,43,0.75);
+    background-color: transparent;
     top: 0;
     left: 0;
     bottom: 0;
@@ -752,7 +756,7 @@ banner
 
 .main-banner .caption h5{
   font-weight: bold;
-  color: black;
+  color: white;
 }
 
 .main-banner .caption h2 {
@@ -772,7 +776,7 @@ banner
 }
 
 .main-banner .caption p {
-  color: black;
+  color: white;
   font-size: 28px;
   max-width: 570px;
   font-weight: bold;
@@ -1442,7 +1446,7 @@ section.contact-us #contact button:hover {
 }
 
 section.contact-us .right-info {
-  background-color: #a12c2f;
+  background-color: #256393;
   border-radius: 20px;
   padding: 40px;
 }
@@ -2105,7 +2109,7 @@ section.contact-us #contact button:hover {
 }
 
 section.contact-us .right-info {
-  background-color: #a12c2f;
+  background-color: #256393;
   border-radius: 20px;
   padding: 40px;
 }
@@ -2251,12 +2255,15 @@ section.FAQ {
 
 
 
+/* Meet the Team Section */
+/* Meet the Team Section */
 .meet-the-team {
-  
   text-align: center;
   background-color: #f9f9f9; /* Light background color */
+  padding: 50px 0;
 }
 
+/* Meet the Team Heading */
 .meet-the-team h2 {
   font-weight: bold;
   font-size: 2rem;
@@ -2266,14 +2273,40 @@ section.FAQ {
   margin-bottom: 15px;
 }
 
-.meet-the-team .team-photo img {
-  width: 100%; /* Ensure image fits within its container */
-  max-width: 150px; /* Restrict image size */
-  margin: 0 auto;
+/* Secretariat Heading */
+.meet-the-team h4 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #6c757d; /* Muted subtitle color */
+  margin-bottom: 30px;
 }
 
+/* Group Picture */
+.meet-the-team .group-picture {
+  width: 100%; /* Full width */
+  max-width: 600px; /* Restrict maximum width */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto 30px; /* Center and add spacing below */
+  display: block;
+  border-radius: 10px; /* Optional: Slight rounding for better aesthetics */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Team Member Photos */
+.team-photo img {
+  width: 100%; /* Ensure the image fits the container */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 150px; /* Restrict size */
+  border-radius: 0; /* Square shape */
+  display: block;
+  margin: 0 auto; /* Center the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for effect */
+}
+
+/* Team Member Text */
 .meet-the-team h5 {
   font-weight: bold;
+  margin-top: 15px;
 }
 
 .meet-the-team p {
@@ -2281,17 +2314,24 @@ section.FAQ {
   margin-bottom: 0;
 }
 
+
 /* Responsive behavior */
 @media (max-width: 768px) {
-  .meet-the-team {
-    margin-top: 80px; /* Adjust margin for smaller screens */
+  .meet-the-team .group-picture {
+    max-width: 100%; /* Allow group picture to scale on smaller screens */
+  }
+
+  .team-photo img {
+    max-width: 120px; /* Reduce size of individual photos */
   }
 }
+
+
 
 #countdown-timer {
   font-size: 1.5rem;
   font-weight: bold;
-  color: black; /* Adjust color for visibility */
+  color: white; /* Adjust color for visibility */
   margin-bottom: 10px;
 }
 
@@ -2300,7 +2340,6 @@ section.FAQ {
     font-size: 1.2rem; /* Slightly reduce size for smaller screens */
   }
 }
-
 
 /* Registration Section Styling */
 .registration-section {
@@ -2320,6 +2359,19 @@ section.FAQ {
   color: #333; /* Dark text color */
 }
 
+/* Registration Details Styling */
+.registration-details {
+  margin-bottom: 20px; /* Space below the details and buttons */
+  font-size: 1.2rem; /* Font size for details */
+  color: #555; /* Slightly muted text color */
+  text-align: left; /* Align text to the left */
+}
+
+.registration-details p {
+  margin: 10px 0; /* Space between each line of details */
+}
+
+/* Options (Buttons) */
 .options {
   display: flex;
   flex-direction: column;
@@ -2343,13 +2395,67 @@ section.FAQ {
 .btn-pill:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+/* Sub-heading Styling */
+.sub-heading {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333; /* Darker text color */
+}
 
+/* Registration Group Styling */
+.registration-group {
+  width: 100%;
+  max-width: 600px; /* Limit width of each group */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Registration Details Styling */
+.registration-details {
+  margin-bottom: 20px; /* Space below the details and buttons */
+  font-size: 1.2rem; /* Font size for details */
+  color: #555; /* Slightly muted text color */
+  text-align: left; /* Align text to the left */
+}
+
+.registration-details p {
+  margin: 10px 0; /* Space between each line of details */
+}
+
+/* Options (Buttons) */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between buttons */
+}
+
+/* Pill Button Styling */
+.btn-pill {
+  display: inline-block;
+  padding: 10px 30px; /* Size of the pill button */
+  font-size: 1.2rem; /* Button text size */
+  font-weight: bold;
+  text-decoration: none; /* Remove underline */
+  color: #fff; /* White text */
+  background-color: #007BFF; /* Blue background */
+  border-radius: 50px; /* Makes the buttons pill-shaped */
+  text-align: center;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.btn-pill:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Footer */
 .footer {
   text-align: center;
   margin-top: 50px; /* Space above the footer */
   font-size: 0.9rem;
   color: #777; /* Muted text color */
 }
+
 .contact-us {
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -2415,6 +2521,34 @@ section.FAQ {
 /* Departments Section Styling */
 .departments-section {
   background-color: #f9f9f9; /* Light gray background */
+}
+/* Team Member Styling */
+.team-member {
+  text-align: center;
+}
+
+.team-photo {
+  width: 150px; /* Width for square photo */
+  height: 150px; /* Height to make it square */
+  overflow: hidden; /* Ensures the image doesn't exceed the bounds */
+  border-radius: 0; /* Removes circular appearance */
+  margin: 0 auto 10px; /* Centers the photo and adds spacing below */
+}
+
+.team-photo img {
+  width: 100%; /* Ensures the image fits within the square */
+  height: 100%; /* Ensures the image fills the square */
+  object-fit: cover; /* Maintains the aspect ratio and prevents distortion */
+}
+
+.team-member h5 {
+  font-weight: bold;
+  margin: 10px 0 5px; /* Adds spacing between the name and the photo */
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #333; /* Adjust the text color as needed */
 }
 
 /* Responsive Styling */
@@ -2505,7 +2639,7 @@ section.FAQ {
   min-height: 100vh; /* Ensure full-screen height */
   background: #f1f1f1; /* Light gray background */
  /* Adjust this value to match your header height */
-  color: #000; /* Ensure text contrast */
+  color: white; /* Ensure text contrast */
 }
 
 .conference-schedule .page-title {
@@ -2642,3 +2776,86 @@ section.FAQ {
 .our-courses a {
   text-decoration: none; /* Removes underline from links */
 }
+
+
+.filler-2 {
+  background: url(".."); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  width: 100%; /* Full width */
+  height: 100vh; /* Full height of the viewport */
+}
+
+
+
+
+
+.section.main-banner {
+  position: relative; /* Makes sure child elements like #bg-image are positioned correctly */
+  width: 100%; /* Full width */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  overflow: hidden; /* Prevents any overflow issues */
+}
+
+.video-overlay {
+  position: absolute;
+  background-color: rgba(31, 39, 43, 0.75); /* Overlay color */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Keeps the overlay above the background */
+}
+
+.caption {
+  position: relative;
+  text-align: center;
+  z-index: 2; /* Keeps content above overlay and background */
+  color: white;
+}
+
+.committee-card {
+  text-align: center; /* Center-aligns all text content inside committee-card */
+}
+
+.committee-title {
+  margin: 20px 0; /* Optional: Adjust spacing for the title */
+}
+
+.committee-card p {
+  font-size: 1rem; /* Optional: Adjust font size for readability */
+  margin: 10px 0; /* Add space above and below the paragraph */
+  text-align: center; /* Explicitly center the Agenda line */
+  display: inline-block; /* Ensures proper centering of content */
+}
+
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.footer .social-icons {
+  margin-top: 10px; /* Space between the copyright and icons */
+}
+
+.footer .social-icons a {
+  text-decoration: none;
+  margin: 0 10px; /* Spacing between icons */
+  color: #777; /* Default color for icons */
+  font-size: 1.5rem; /* Size of icons */
+  transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+  color: #0077b5; /* Highlight color on hover (LinkedIn blue for both) */
+}
+

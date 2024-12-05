@@ -8,12 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <title>UoBDMUN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Education Meeting HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
@@ -35,7 +34,8 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- Sub Header -->
 
 
-  <header class="header-area header-sticky">
+  <!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -48,8 +48,8 @@ https://templatemo.com/tm-569-edu-meeting
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li ><a href="index.html" >Home</a></li>
-                        <li><a href="schedule.html" class="active" >Schedule</a></li>
-                       <li ><a href="commitees.html" >Committees</a></li> 
+                        <li><a href="schedule.html" >Schedule</a></li>
+                       <li ><a href="commitees.html" class="active">Committees</a></li> 
                        <li ><a href="team.html">team</a></li> 
                         <!-- <li class="has-sub">
                             <a href="javascript:void(0)">Pages</a>
@@ -79,57 +79,33 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
     </div>
   </header>
+
+
   <section class="filler" id="filler"></section>
-  <section class="conference-schedule" id="schedule">
-    <div class="overlay">
-      <div class="container py-5">
-        <!-- Page Title -->
-        <div class="row text-center mb-5">
-          <div class="col-12">
-            <h2 class="page-title">Conference Dates and Timings</h2>
+<section class="committee-info">
+    <div class="container">
+      <!-- Back Button -->
+      <div class="back-button">
+        <a href="javascript:history.back()">← Back</a>
+      </div>
+      
+      <!-- Committee Card -->
+      <div class="committee-card">
+        <img src="assets/images/unsc.webp" alt="Committee Logo" class="committee-logo">
+        <h2 class="committee-title">Historical Security Council (HSC)</h2>
+        <p><strong>Agenda:</strong> The Cuban Missile Crisis (1962) : Navigating the Brink of Nuclear War</p>
+        
+        <!-- Chair and Co-Chair -->
+        <div class="chair-info">
+          <div class="chair">
+            <h3>Chair</h3>
+            <div class="chair-photo"></div>
+            <p>TBA</p>
           </div>
-        </div>
-  
-        <!-- Schedule Columns -->
-        <div class="row text-center">
-          <!-- Friday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Friday</h3>
-              <ul>
-                <li><strong>Registration</strong> <br> 2:00 PM - 4:00 PM</li>
-                <li><strong>Opening Ceremony</strong> <br> 4:00 PM - 5:00 PM</li>
-                <li><strong>Committee Session 1</strong> <br> 5:30 PM - 8:00 PM</li>
-              </ul>
-            </div>
-          </div>
-  
-          <!-- Saturday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Saturday</h3>
-              <ul>
-                <li><strong>Committee Session 2</strong> <br> 10:00 AM - 12:00 PM</li>
-                <li><strong>Lunch Break</strong> <br> 12:00 PM - 1:30 PM</li>
-                <li><strong>Committee Session 3</strong> <br> 1:30 PM - 4:30 PM</li>
-                <li><strong>Coffee Break</strong> <br> 4:30 PM - 5:00 PM</li>
-                <li><strong>Committee Session 4</strong> <br> 5:00 PM - 7:30 PM</li>
-                <li><strong>Social Night</strong> <br> 7:30 PM - 10:00 PM</li>
-              </ul>
-            </div>
-          </div>
-  
-          <!-- Sunday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Sunday</h3>
-              <ul>
-                <li><strong>Committee Session 5</strong> <br> 10:00 AM - 12:00 PM</li>
-                <li><strong>Break</strong> <br> 12:00 PM - 1:00 PM</li>
-                <li><strong>Committee Session 6</strong> <br> 1:00 PM - 3:30 PM</li>
-                <li><strong>Closing Ceremony</strong> <br> 4:00 PM - 6:00 PM</li>
-              </ul>
-            </div>
+          <div class="co-chair">
+            <h3>Chair</h3>
+            <div class="chair-photo"></div>
+            <p>TBA</p>
           </div>
         </div>
       </div>
@@ -146,10 +122,8 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
       </div>
   </section>
-  
 
 
-  
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -207,10 +181,35 @@ https://templatemo.com/tm-569-edu-meeting
       $(window).scroll(function () {
         checkSection();
       });
+      function updateCountdown() {
+  const targetDate = new Date("January 24, 2025 00:00:00").getTime();
+  const now = new Date().getTime();
+  const timeLeft = targetDate - now;
 
+  if (timeLeft > 0) {
+    // Calculate days, hours, minutes, seconds
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Display countdown
+    document.getElementById("countdown-timer").innerHTML =
+      `<span>${days}d</span> : <span>${hours}h</span> : <span>${minutes}m</span> : <span>${seconds}s</span>`;
+  } else {
+    // Display expired message
+    document.getElementById("countdown-timer").innerHTML = "The conference has started!";
+    clearInterval(countdownInterval); // Stop the interval when the time is up
+  }
+}
+
+// Update the countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call to display the timer immediately
       
   </script>
 </body>
 
 </body>
 </html>
+  
