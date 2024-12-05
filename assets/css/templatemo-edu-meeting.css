@@ -2859,3 +2859,14 @@ section.FAQ {
   color: #0077b5; /* Highlight color on hover (LinkedIn blue for both) */
 }
 
+/*index fixes*/
+@media (max-width: 768px) {
+  .image-content {
+    padding-top: 20px; /* Add equal padding above the image container */
+  }
+
+  
+}
+
+
+
