@@ -2870,3 +2870,82 @@ section.FAQ {
 
 
 
+/*faq */
+.accordion-body {
+  overflow: hidden; /* Ensures content is clipped when hidden */
+  height: 0; /* Sets the height to 0 when collapsed */
+  transition: height 300ms ease-in-out; /* Smooth height transition */
+  border-bottom: 1px solid #fff; /* Keeps the border for closed state */
+  padding: 0; /* Remove padding when collapsed */
+  margin: 0; /* Remove margin when collapsed */
+}
+
+.accordion-body > .content {
+  padding: 20px; /* Applies padding only when expanded */
+}
+
+.accordion-head {
+  padding: 20px;  
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f272b;
+  cursor: pointer;
+  transition: color 200ms ease-in-out;
+  border-bottom: 1px solid #fff;
+  margin: 0; /* Remove any margin to avoid extra space */
+}
+
+.accordion-head.is-open + .accordion-body {
+  height: auto; /* Expands the content when open */
+  overflow: visible; /* Allow visible content when expanded */
+}
+
+section.FAQ {
+  background-color: #256393;
+  background-position: center center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 140px 20px; /* Added padding to ensure spacing on smaller screens */
+  display: flex;
+  align-items: center; /* Vertically center the container */
+  text-align: center; /* Center the text */
+  flex-direction: column; /* Ensure content stacks vertically */
+}
+
+.accordions {
+  border-radius: 20px;
+  padding: 40px;
+  background-color: #fff;
+  max-width: 800px; /* Restrict width for better centering */
+  width: 100%; /* Ensure responsiveness */
+  margin: 0 auto; /* Center the accordion container horizontally */
+}
+
+.accordion-head {
+  padding: 20px;  
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f272b;
+  cursor: pointer;
+  transition: color 200ms ease-in-out;
+  border-bottom: 1px solid #fff;
+  margin: 0;
+  text-align: left; /* Ensure text alignment looks consistent */
+}
+
+@media (max-width: 768px) {
+  section.FAQ {
+    padding: 100px 10px; /* Adjust padding for smaller screens */
+  }
+
+  .accordions {
+    padding: 20px; /* Reduce padding inside the accordion on smaller screens */
+    max-width: 95%; /* Allow more flexibility for smaller screens */
+  }
+
+  .accordion-head {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}
+
