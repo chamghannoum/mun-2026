@@ -2416,7 +2416,7 @@ section.FAQ {
   margin-bottom: 20px; /* Space below the details and buttons */
   font-size: 1.2rem; /* Font size for details */
   color: #555; /* Slightly muted text color */
-  text-align: left; /* Align text to the left */
+  text-align: center; /* Align text to the left */
 }
 
 .registration-details p {
@@ -2447,6 +2447,15 @@ section.FAQ {
 .btn-pill:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+
+/* Options (Buttons) for Delegate Registration */
+.registration-group .options {
+  display: flex;
+  flex-direction: row; /* Align buttons side by side */
+  justify-content: center; /* Center buttons horizontally */
+  gap: 20px; /* Space between buttons */
+}
+
 
 /* Footer */
 .footer {
@@ -2562,8 +2571,6 @@ section.FAQ {
   }
 }
 
-
-
 /*schedule/*
 /* Full-Screen Background */
 /* Full-Screen Background with Image */
@@ -2576,14 +2583,6 @@ section.FAQ {
 }
 
 
-.conference-schedule .overlay {
-  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
-  min-height: 100vh; /* Match the section height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .page-title {
   font-size: 2.5rem;
@@ -2595,6 +2594,7 @@ section.FAQ {
 .schedule-box {
   background-color: #fff; /* White background for boxes */
   color: #333; /* Dark text for readability */
+  border: 2px solid #daae2d;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -2647,8 +2647,89 @@ section.FAQ {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
 }
+
+.schedule-box {
+  background: url(../images/sch.jpg) no-repeat center center; /* Replace 'your-image-path.jpg' with the actual image path or URL */
+  background-size: cover; /* Ensures the image covers the entire card */
+}
+
+
+.timeline {
+  position: relative;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.timeline li {
+  position: relative;
+  padding-left: 30px; /* Space for the timeline */
+  margin-bottom: 20px;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 10px; /* Align with the timeline */
+  top: 0;
+  width: 10px;
+  height: 10px;
+  background-color: #333; /* Dot color */
+  border-radius: 50%;
+}
+
+.timeline li::after {
+  content: "";
+  position: absolute;
+  left: 14px; /* Center the line with the dot */
+  top: 10px;
+  bottom: -10px;
+  width: 2px;
+  background-color: #ccc; /* Line color */
+}
+
+.timeline li:last-child::after {
+  content: none; /* Remove the line for the last item */
+}
+
+.time-red {
+  color: #ce202a;
+}
+.time-blue {
+  color: #33679d;
+}
+.time-yellow {
+  color: #daae2d;
+}
+
+.schedule-box ul {
+  text-align: left; /* Align the text inside the list */
+}
+
+.schedule-box ul li {
+  text-align: left; /* Ensure list items align to the left */
+}
+
+.page-title {
+  text-align: center !important; /* Ensure it is centered */
+  margin: 0 auto; /* Center the element within its container */
+  display: block; /* Ensure block-level behavior for proper alignment */
+}
+
+.page-title, .schedule-box, .schedule-box ul li, .timeline {
+  font-family: 'Larken', sans-serif;
+}
+
+.conference-schedule {
+  background: #256393 url(../images/letter.png) no-repeat center center; /* Replace #f0f4f8 with your color */
+  background-size: cover; /* Ensures the image covers the entire section */
+  min-height: 100vh; /* Full viewport height */
+  padding: 50px 0; /* Add padding for spacing */
+}
+
+
+
 
 
 
@@ -2989,3 +3070,9 @@ section.FAQ {
     font-size: 2rem; /* Adjust title font size for smaller screens */
   }
 }
+
+.our-courses .container > .row:first-child p {
+  margin-bottom: 40px; /* Adjust the value as needed */
+}
+
+
