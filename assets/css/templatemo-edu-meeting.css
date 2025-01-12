@@ -2704,7 +2704,7 @@ section.FAQ {
 }
 
 .schedule-box ul {
-  text-align: left; /* Align the text inside the list */
+  text-align: center; /* Align the text inside the list */
 }
 
 .schedule-box ul li {
@@ -2743,17 +2743,16 @@ section.FAQ {
 }
 
 
-
 /* General Section Styling */
 .committee-info {
-  background-image: url('../images/letter.png'); /* Replace with the path to your image */
-  background-color:#256393;
-  background-size: cover; /* Ensures the image covers the entire section */
-  background-position: center center; /* Centers the background image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  min-height: 100vh; /* Ensures the section takes up the full viewport height */
-  padding: 60px 20px; /* Adds padding for content */
-  position: relative; /* Allows positioning of child elements */
+  background-image: url('../images/letter.png');
+  background-color: #256393;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 60px 20px;
+  position: relative;
   z-index: 1;
 }
 
@@ -2764,16 +2763,17 @@ section.FAQ {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Optional: Adds a semi-transparent overlay */
-  z-index: -1; /* Ensures the overlay is behind the content */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
 
 .committee-card {
-  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background for the card */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   align-items: center;
+  text-align: center;
 }
 
 .committee-logo {
@@ -2791,28 +2791,152 @@ section.FAQ {
   margin-bottom: 10px;
 }
 
-.chair-info {
+.chair-cards {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 20px;
+  gap: 20px;
 }
 
-.chair, .co-chair {
+.chair-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   text-align: center;
+  width: 500px;
+  transition: transform 0.3s ease;
 }
 
-.chair h3, .co-chair h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
+
 
 .chair-photo {
-  width: 80px;
-  height: 80px;
-  background-color: #ddd;
-  border-radius: 50%;
-  margin: 10px auto;
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  border-radius: 10px;
 }
+
+.chair-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chair-title {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.chair-bio {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.chair-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 10px; /* Reduce gap between cards */
+}
+
+.chair-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 375px; /* Increase card width */
+   margin-bottom: 50px;
+}
+
+.chair-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Allows wrapping for responsive design */
+  gap: 20px; /* Space between cards */
+  align-items: flex-start; /* Ensures cards are not stretched */
+}
+
+.chair-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 375px; /* Fixed card width */
+  margin-bottom: 50px;
+  flex-grow: 0; /* Prevent cards from growing */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+
+#ch {
+  display: none;
+}
+
+#ch:checked ~ .bio {
+  display: block;
+}
+
+#ch:checked ~ label{
+  display: none;
+}
+
+#ch2 {
+  display: none;
+}
+
+#ch2:checked ~ .bio {
+  display: block;
+}
+
+#ch2:checked ~ label{
+  display: none;
+}
+.bio {
+  display: none;
+
+}
+.chair-card label {
+  display:flex;
+  justify-self: center;
+  cursor: pointer;
+  padding: 10px 30px; /* Adjust padding for size */
+  background-color: #C9984E; /* Button background color */
+  color: #FFFFFF; /* Button text color */
+  font-size: 16px; /* Adjust font size */
+  font-weight: bold; /* Make text bold */
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  border: none; /* Remove default border */
+  border-radius: 50px; /* Makes the button pill-shaped */
+  transition: all 0.3s ease; /* Smooth hover transition */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow */
+}
+
+.chair-card label:hover {
+  background-color: #C7432F; /* Darker shade on hover */
+  color: #FFFFFF; /* Keep text color consistent */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+}
+
+
+.chair-title {
+  font-weight: bold;
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 15px; /* Add extra margin to push the button below */
+}
+
 
 .back-button a {
   display: inline-block;
