@@ -2902,6 +2902,18 @@ section.FAQ {
 #ch2:checked ~ label{
   display: none;
 }
+
+#ch3 {
+  display: none;
+}
+
+#ch3:checked ~ .bio {
+  display: block;
+}
+
+#ch3:checked ~ label{
+  display: none;
+}
 .bio {
   display: none;
 
