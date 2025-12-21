@@ -241,6 +241,7 @@
         .flip-card {
             perspective: 1000px;
             height: 400px;
+            cursor: pointer;
         }
 
         .flip-card-inner {
@@ -251,7 +252,14 @@
             transform-style: preserve-3d;
         }
 
-        .flip-card:hover .flip-card-inner,
+        /* Desktop: hover to flip */
+        @media (hover: hover) {
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Mobile/Touch: tap to flip */
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
         }
@@ -535,6 +543,19 @@
                 height: 450px;
             }
 
+            .committee-logo-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .committee-abbr {
+                font-size: 1.5rem;
+            }
+
+            .flip-hint {
+                font-size: 0.8rem;
+            }
+
             .info-grid {
                 grid-template-columns: 1fr;
             }
@@ -543,16 +564,20 @@
                 font-size: 1.3rem;
             }
 
-            .committee-full-name {
+            .committee-fullname {
                 font-size: 0.8rem;
             }
 
             .flip-card-back {
                 padding: 1.5rem;
             }
+
+            .committee-description {
+                font-size: 0.85rem;
+            }
         }
 
-        /* Mobile: tap to flip instead of hover */
+        /* Mobile: remove hover effect, use tap only */
         @media (hover: none) {
             .flip-card:hover .flip-card-inner {
                 transform: none;
@@ -791,10 +816,20 @@
             });
         });
 
-        // Mobile tap to flip
+        // Mobile tap to flip - improved for touch devices
         document.querySelectorAll('.flip-card').forEach(card => {
-            card.addEventListener('click', function() {
-                if (window.matchMedia('(hover: none)').matches) {
+            // For touch devices, use click to toggle
+            card.addEventListener('click', function(e) {
+                // Only flip on mobile/tablet
+                if (window.innerWidth <= 1024 || window.matchMedia('(hover: none)').matches) {
+                    e.preventDefault();
+                    // Close all other cards
+                    document.querySelectorAll('.flip-card').forEach(otherCard => {
+                        if (otherCard !== this) {
+                            otherCard.classList.remove('flipped');
+                        }
+                    });
+                    // Toggle this card
                     this.classList.toggle('flipped');
                 }
             });
