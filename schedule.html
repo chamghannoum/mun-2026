@@ -1,219 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Larken:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="UoBDMUN 2026 Conference Schedule">
+    <meta name="author" content="UoBDMUN">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <title>UoBDMUN</title>
+    <title>Schedule | UoBDMUN 2026</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary-blue: #1e3a5f;
+            --secondary-blue: #2d5a8c;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e7c3;
+            --dark-navy: #0f1d2e;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+            --gradient-accent: linear-gradient(135deg, #d4af37 0%, #f4e7c3 100%);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
+        }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-TemplateMo 569 Edu Meeting
+        /* ===================== HEADER ===================== */
+        .header-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
 
-https://templatemo.com/tm-569-edu-meeting
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
--->
-  </head>
+        .logo img {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav li a:hover::after,
+        .nav li a.active::after {
+            width: 100%;
+        }
+
+        .nav li a:hover,
+        .nav li a.active {
+            color: var(--primary-blue);
+        }
+
+        .menu-trigger {
+            display: none;
+        }
+
+        /* ===================== HERO BANNER ===================== */
+        .schedule-hero {
+            margin-top: 80px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.95), rgba(45, 90, 140, 0.9)),
+                        url('assets/images/university-bg.jpg') center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            top: -150px;
+            right: -150px;
+        }
+
+        .schedule-hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.05);
+            bottom: -200px;
+            left: -200px;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===================== SCHEDULE SECTION ===================== */
+        .schedule-section {
+            padding: 100px 5%;
+            background: var(--light-bg);
+            position: relative;
+        }
+
+        .schedule-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .schedule-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .schedule-intro h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-intro p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* ===================== DAY CARD ===================== */
+        .day-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .day-header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .day-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .day-date {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .day-body {
+            padding: 2rem;
+        }
+
+        /* ===================== TIMELINE ===================== */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-gold), var(--light-gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.45rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-gold);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--light-gold);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.2);
+        }
+
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--light-gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        .event-time {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .time-icon {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+        }
+
+        /* ===================== HIGHLIGHT EVENTS ===================== */
+        .highlight-section {
+            background: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            margin-top: 4rem;
+        }
+
+        .highlight-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .highlight-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--light-bg);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--dark-navy);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* ===================== DOWNLOAD CTA ===================== */
+        .download-cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-cta::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            top: -150px;
+            right: -100px;
+        }
+
+        .download-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: var(--accent-gold);
+            color: var(--dark-navy);
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--accent-gold);
+            color: var(--dark-navy);
+            transform: translateY(-5px);
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .menu-trigger {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .days-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .day-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .day-title {
+                font-size: 1.5rem;
+            }
+
+            .highlight-title {
+                font-size: 1.5rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .schedule-section {
+                padding: 60px 5%;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 1rem;
+            }
+
+            .event-title {
+                font-size: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .event-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
 
 <body>
 
-  <!-- Sub Header -->
+    <!-- HEADER -->
+    <header class="header-area">
+        <nav class="main-nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/main_logo.png" alt="UoBDMUN Logo">
+            </a>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html" class="active">Schedule</a></li>
+                <li><a href="commitees.html">Committees</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="FAQ.html">FAQs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+        </nav>
+    </header>
 
+    <!-- HERO BANNER -->
+    <section class="schedule-hero">
+        <div class="hero-content">
+            <div class="hero-tag">April 3-5, 2026</div>
+            <h1 class="hero-title">Conference Schedule</h1>
+            <p class="hero-subtitle">Three days of diplomacy, debate, and dynamic collaboration</p>
+        </div>
+    </section>
 
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                      <img src="assets/images/main_logo.png" alt="Edu Meeting Logo">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li ><a href="index.html" >Home</a></li>
-                        <li><a href="schedule.html" class="active" >Schedule</a></li>
-                       <li ><a href="commitees.html" >Committees</a></li> 
-                       <li ><a href="team.html">team</a></li> 
-                        <!-- <li class="has-sub">
-                            <a href="javascript:void(0)">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="meetings.html">Upcoming Meetings</a></li>
-                                <li><a href="meeting-details.html">Meeting Details</a></li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class="has-sub">
-                          <a href="javascript:void(0)">Register</a>
-                          <ul class="sub-menu">
-                              <li><a href="https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&token=5c0bd7571d504305bd286b14329edf86&id=z8oksN7eQUKhXDyX1VPp88hM4G62d1pCpiFpYBYbX4VUMlhIWEJNMUdIWDJETEVPNE9VM1lESU1VTC4u ">Institutional</a></li>
-                              <li><a href="https://forms.gle/jvmwExzPTDpdAd7h9">Individual</a></li>
-                              <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd_h227jt1_fOnu5YC2NQ-oOW1rGlsGfO6LW3djD4p_RZNELA/viewform ">Moderator</a></li> 
-                          </ul>
-                      </li> -->
-                       <li ><a href="register.html" >Register</a></li> 
-                        <li ><a href="FAQ.html">FAQs</a></li> 
-                        <li ><a href="contact.html">Contact Us</a></li> 
-                    </ul>        
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+    <!-- SCHEDULE SECTION -->
+    <section class="schedule-section">
+        <div class="schedule-container">
+            
+            <div class="schedule-intro">
+                <h2>Plan Your Conference</h2>
+                <p>From opening ceremonies to closing remarks, every moment is designed to challenge, inspire, and connect you with fellow delegates from around the world.</p>
+            </div>
+
+            <!-- DAYS GRID -->
+            <div class="days-grid">
+                
+                <!-- FRIDAY -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-number">Day 01</div>
+                        <h2 class="day-title">Friday</h2>
+                        <div class="day-date">April 3rd, 2026</div>
+                    </div>
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-clipboard-check"></i></div>
+                                    <span>Registration</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    2:00 PM - 4:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-door-open"></i></div>
+                                    <span>Opening Ceremony</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    4:00 PM - 5:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 1</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    5:30 PM - 8:00 PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SATURDAY -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-number">Day 02</div>
+                        <h2 class="day-title">Saturday</h2>
+                        <div class="day-date">April 4th, 2026</div>
+                    </div>
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 2</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    10:00 AM - 12:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-utensils"></i></div>
+                                    <span>Lunch Break</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    12:00 PM - 1:30 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 3</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    1:30 PM - 4:30 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-coffee"></i></div>
+                                    <span>Coffee Break</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    4:30 PM - 5:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 4</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    5:00 PM - 7:30 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-glass-cheers"></i></div>
+                                    <span>Social Night</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    7:30 PM - 10:00 PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUNDAY -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-number">Day 03</div>
+                        <h2 class="day-title">Sunday</h2>
+                        <div class="day-date">April 5th, 2026</div>
+                    </div>
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 5</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    10:00 AM - 12:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-pause-circle"></i></div>
+                                    <span>Break</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    12:00 PM - 1:00 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-comments"></i></div>
+                                    <span>Committee Session 6</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    1:00 PM - 3:30 PM
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="event-title">
+                                    <div class="event-icon"><i class="fas fa-award"></i></div>
+                                    <span>Closing Ceremony</span>
+                                </div>
+                                <div class="event-time">
+                                    <i class="fas fa-clock time-icon"></i>
+                                    4:00 PM - 6:00 PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- HIGHLIGHTS -->
+            <div class="highlight-section">
+                <h2 class="highlight-title">Conference Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>6 Sessions</h3>
+                        <p>Intensive committee debates across three days</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3>Social Night</h3>
+                        <p>Network and connect with delegates</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Awards</h3>
+                        <p>Recognition for outstanding delegates</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-  </header>
-  <section class="filler" id="filler"></section>
-  <div class="conference-schedule" id="schedule">
-    <div class="overlay">
-      <div class="container py-5">
-        <!-- Page Title -->
-        <div class="row text-center mb-5">
-          <div class="col-12">
-            <h2 class="page-title">Conference Dates and Timings</h2>
-          </div>
-        </div>
-  
-        <!-- Schedule Columns -->
-        <div class="row text-center">
-          <!-- Friday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Friday 24th of &nbsp;&nbsp;January</h3>
-              <ul class="timeline">
-                <li><strong><span class="time-red">Registration</span></strong> <br> <span class="time-blue">- 2:00 PM to 4:00 PM</span></li>
-                <li><strong><span class="time-red">Opening Ceremony</span></strong> <br><span class="time-blue">- 4:00 PM to 5:00 PM</span></li>
-                <li><strong><span class="time-red">Committee Session 1</span></strong> <br><span class="time-blue">- 5:30 PM to 8:00 PM</span></li>
-              </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://www.instagram.com/uobd.mun/" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/uobdmun/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
             </div>
-          </div>
-  
-          <!-- Saturday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Saturday 25th of January</h3>
-              <ul class="timeline">
-                <li><strong><span class="time-red">Committee Session 2</span></strong> <br><span class="time-blue"> - 10:00 AM to 12:00 PM</span></li>
-                <li><strong><span class="time-red">Lunch Break</span></strong> <br><span class="time-blue">- 12:00 PM to 1:30 PM</span></li>
-                <li><strong><span class="time-red">Committee Session 3</span></strong> <br><span class="time-blue"> - 1:30 PM to 4:30 PM</li>
-                <li><strong><span class="time-red">Coffee Break</span></strong> <br><span class="time-blue">- 4:30 PM to 5:00 PM</span></li>
-                <li><strong><span class="time-red">Committee Session 4</span></strong> <br><span class="time-blue"> - 5:00 PM to 7:30 PM</li>
-                <li><strong><span class="time-red">Social Night</span></strong> <br><span class="time-blue">- 7:30 PM to 10:00 PM</li>
-              </ul>
+            <div class="footer-copyright">
+                <p>&copy; 2024 UoBDMUN, University of Birmingham Dubai. All Rights Reserved.</p>
             </div>
-          </div>
-  
-          <!-- Sunday -->
-          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="schedule-box">
-              <h3>Sunday 26th of January</h3>
-              <ul class="timeline">
-                <li><strong><span class="time-red">Committee Session 5</span></strong> <br><span class="time-blue">- 10:00 AM to 12:00 PM</span></li>
-                <li><strong><span class="time-red">Break</span></strong> <br><span class="time-blue">- 12:00 PM to 1:00 PM</span></li>
-                <li><strong><span class="time-red">Committee Session 6</span></strong> <br><span class="time-blue">- 1:00 PM to 3:30 PM</span></li>
-                <li><strong><span class="time-red">Closing Ceremony</span></strong> <br><span class="time-blue">- 4:00 PM to 6:00 PM</span></li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
-    
-  
-  
-    <div class="footer">
-        <p>Copyright © 2024 UOBDMUN, Ltd. All Rights Reserved.</p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/uobd.mun/profilecard/?igsh=MXQ5NzZleHl3b2J5bg==" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A103223958&keywords=uobdmun&origin=RICH_QUERY_SUGGESTION&position=0&searchId=cf3a014a-8c5c-4c68-a9f4-71466239a8e6&sid=2ri&spellCorrectionEnabled=false" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </div>
-  </section>
-  
+    </footer>
 
-
-  
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/lightbox.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/video.js"></script>
-  <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script>
-      //according to loftblog tut
-      $('.nav li:first').addClass('active');
-
-      var showSection = function showSection(section, isAnimate) {
-        var
-        direction = section.replace(/#/, ''),
-        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-        reqSectionPos = reqSection.offset().top - 0;
-
-        if (isAnimate) {
-          $('body, html').animate({
-            scrollTop: reqSectionPos },
-          800);
-        } else {
-          $('body, html').scrollTop(reqSectionPos);
-        }
-
-      };
-
-      var checkSection = function checkSection() {
-        $('.section').each(function () {
-          var
-          $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var
-            currentId = $this.data('section'),
-            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-            reqLink.closest('li').addClass('active').
-            siblings().removeClass('active');
-          }
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header-area');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
         });
-      };
 
-      $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-        e.preventDefault();
-        showSection($(this).attr('href'), true);
-      });
+        // Animate timeline items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-      $(window).scroll(function () {
-        checkSection();
-      });
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
 
-      
-  </script>
-</body>
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
 
 </body>
 </html>
