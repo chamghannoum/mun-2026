@@ -602,10 +602,6 @@
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
             position: relative;
             z-index: 1;
         }
@@ -677,30 +673,6 @@
             font-size: 0.9rem;
             color: var(--text-light);
             margin: 0;
-        }
-
-        .about-image-container {
-            position: relative;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-image-overlay {
-            position: absolute;
-            bottom: 2rem;
-            left: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
         }
 
         .about-stat {
@@ -777,14 +749,6 @@
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 1024px) {
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                height: 500px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -936,17 +900,6 @@
 
             .about-features {
                 grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                height: 350px;
-            }
-
-            .about-image-overlay {
-                left: 1rem;
-                right: 1rem;
-                bottom: 1rem;
-                padding: 1.5rem;
             }
 
             .stat-number {
@@ -1142,10 +1095,6 @@
                 <p>
                     So, if you're ready to channel your inner diplomat and shape the future, join us for an unforgettable experience at <strong>UoBDMUN 2026!</strong>
                 </p>
-            </div>
-
-            <div class="about-image-container">
-                <img src="assets/images/chair11.jpg" alt="UOBDMUN Students" class="about-image">
             </div>
         </div>
     </section>
