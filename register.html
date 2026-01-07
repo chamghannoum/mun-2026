@@ -400,30 +400,10 @@
 
         .pricing-body {
             padding: 2rem;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .pricing-features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--light-bg);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-features i {
-            color: var(--accent-gold);
-            font-size: 1rem;
+            justify-content: center;
+            min-height: 100px;
         }
 
         .pricing-cta {
@@ -558,6 +538,97 @@
 
         .btn-register.alt:hover {
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ===================== REGISTRATION STEPS SECTION ===================== */
+        .registration-steps {
+            background: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 4rem;
+        }
+
+        .steps-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .steps-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .steps-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .step-note {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 10px;
+        }
+
+        .step-note strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .step-note p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin: 0;
         }
 
         /* ===================== MODERATOR SECTION ===================== */
@@ -840,6 +911,24 @@
                 padding: 0.8rem 1.5rem;
             }
 
+            .registration-steps {
+                padding: 3rem 1.5rem;
+            }
+
+            .steps-header h3 {
+                font-size: 1.6rem;
+            }
+
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .step-number {
+                margin: 0 auto;
+            }
+
             .moderator-section {
                 padding: 3rem 1.5rem;
             }
@@ -908,12 +997,12 @@
     <!-- HERO BANNER -->
     <section class="register-hero">
         <div class="hero-content">
-            <div class="hero-tag">Secure Your Spot</div>
+            <div class="hero-tag">Registration Open</div>
             <h1 class="hero-title">Register Now</h1>
             <p class="hero-subtitle">Be a part of one of the best MUN conferences held by a Russell Group University!</p>
-            <!-- <div class="hero-deadline">
-                <strong>Early Bird Deadline:</strong> December 11th, 2024
-            </div> -->
+            <div class="hero-deadline">
+                <strong>Early Bird Deadline:</strong> January 20th, 2026
+            </div>
         </div>
     </section>
 
@@ -921,21 +1010,7 @@
     <section class="pricing-section">
         <div class="pricing-container">
             
-            <!-- TO BE RELEASED BANNER -->
-            <div class="coming-soon-banner">
-                <div class="banner-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h2>Delegate Registration</h2>
-                <div class="banner-badge">TO BE RELEASED</div>
-                <p>Delegate registration will open soon! Stay tuned for updates on pricing and registration details.</p>
-                <div class="notify-text">
-                    <i class="fas fa-bell"></i>
-                    Follow us on social media to be notified when registration opens
-                </div>
-            </div>
-
-            <!-- <div class="section-intro">
+            <div class="section-intro">
                 <h2>Delegate Registration</h2>
                 <p class="main-title">Choose Your Plan</p>
                 <p>Select the registration option that works best for you. All delegates receive the same exceptional conference experience.</p>
@@ -943,90 +1018,104 @@
 
             <div class="pricing-grid">
                 
-                // EARLY BIRD
+                <!-- EARLY BIRD -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge">Best Value</div>
+                    <div class="pricing-badge">Open Now</div>
                     <div class="pricing-header">
-                        <div class="pricing-type">Limited Time</div>
+                        <div class="pricing-type">Best Value</div>
                         <h3 class="pricing-title">Early Bird</h3>
-                        <div class="pricing-amount">
-                            200 <sup>AED</sup>
-                        </div>
-                        <div class="pricing-period">December 5th - 11th</div>
-                    </div>
-                    <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check-circle"></i> Full conference access</li>
-                            <li><i class="fas fa-check-circle"></i> Delegate handbook</li>
-                            <li><i class="fas fa-check-circle"></i> Certificate of participation</li>
-                            <li><i class="fas fa-check-circle"></i> Social night access</li>
-                            <li><i class="fas fa-check-circle"></i> Refreshments & meals</li>
-                            <li><i class="fas fa-check-circle"></i> Networking opportunities</li>
-                        </ul>
-                        <div class="pricing-cta">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCcPS6_LP_bTzRTPzkigYB58mvD-AZID_iDpm4w-SY0on3w/viewform" class="btn-register alt">Institutional</a>
-                            <a href="https://forms.gle/jvmwExzPTDpdAd7h9" class="btn-register alt">Individual</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                // NORMAL
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-type">Standard</div>
-                        <h3 class="pricing-title">Normal</h3>
                         <div class="pricing-amount">
                             225 <sup>AED</sup>
                         </div>
-                        <div class="pricing-period">December 12th - January 10th</div>
+                        <div class="pricing-period">January 7th - 20th</div>
                     </div>
                     <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check-circle"></i> Full conference access</li>
-                            <li><i class="fas fa-check-circle"></i> Delegate handbook</li>
-                            <li><i class="fas fa-check-circle"></i> Certificate of participation</li>
-                            <li><i class="fas fa-check-circle"></i> Social night access</li>
-                            <li><i class="fas fa-check-circle"></i> Refreshments & meals</li>
-                            <li><i class="fas fa-check-circle"></i> Networking opportunities</li>
-                        </ul>
                         <div class="pricing-cta">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCcPS6_LP_bTzRTPzkigYB58mvD-AZID_iDpm4w-SY0on3w/viewform" class="btn-register">Institutional</a>
-                            <a href="https://forms.gle/jvmwExzPTDpdAd7h9" class="btn-register">Individual</a>
+                            <a href="https://forms.office.com/e/nqWJcTDEfV" class="btn-register alt">Institutional</a>
+                            <a href="https://forms.office.com/e/wgG6DK3gCm" class="btn-register alt">Individual</a>
                         </div>
                     </div>
                 </div>
 
-                // LATE
+
+                <!-- REGULAR -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <div class="pricing-type">Standard</div>
+                        <h3 class="pricing-title">Regular</h3>
+                        <div class="pricing-amount">
+                            250 <sup>AED</sup>
+                        </div>
+                        <div class="pricing-period">January 21st - February 26th</div>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-cta">
+                            <button class="btn-register" style="opacity: 0.7; cursor: not-allowed; background: #999;" disabled>Opens January 21st</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LATE -->
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <div class="pricing-type">Final Chance</div>
                         <h3 class="pricing-title">Late</h3>
                         <div class="pricing-amount">
-                            250 <sup>AED</sup>
+                            275 <sup>AED</sup>
                         </div>
-                        <div class="pricing-period">January 11th - 15th</div>
+                        <div class="pricing-period">February 27th - March 12th</div>
                     </div>
                     <div class="pricing-body">
-                        <ul class="pricing-features">
-                            <li><i class="fas fa-check-circle"></i> Full conference access</li>
-                            <li><i class="fas fa-check-circle"></i> Delegate handbook</li>
-                            <li><i class="fas fa-check-circle"></i> Certificate of participation</li>
-                            <li><i class="fas fa-check-circle"></i> Social night access</li>
-                            <li><i class="fas fa-check-circle"></i> Refreshments & meals</li>
-                            <li><i class="fas fa-check-circle"></i> Networking opportunities</li>
-                        </ul>
                         <div class="pricing-cta">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmCcPS6_LP_bTzRTPzkigYB58mvD-AZID_iDpm4w-SY0on3w/viewform" class="btn-register">Institutional</a>
-                            <a href="https://forms.gle/jvmwExzPTDpdAd7h9" class="btn-register">Individual</a>
+                            <button class="btn-register" style="opacity: 0.7; cursor: not-allowed; background: #999;" disabled>Opens February 27th</button>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
-            <!-- </div> -->
+            </div>
 
-            <!-- MODERATOR SECTION
-            <div class="moderator-section">
+            <!-- REGISTRATION STEPS -->
+            <div class="registration-steps">
+                <div class="steps-header">
+                    <h3>Registration Steps</h3>
+                </div>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Fill in the Registration Form</h4>
+                            <p>Choose between "Individual" or "Institution Delegation" registration form and complete all required information.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Wait for Payment Link</h4>
+                            <p>You will receive an email with a payment link on Eventbrite. Please check your inbox and spam folder.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Submit Payment & Wait for Confirmation</h4>
+                            <p>Complete the payment process. After at least 2 working days, we will send you registration confirmation.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Receive Allocations</h4>
+                            <p>Once confirmed, you will receive your committee and country allocations.</p>
+                        </div>
+                    </div>
+                    <div class="step-note">
+                        <p><strong>Note:</strong> For institution delegations, you will receive an email for a payment link, not Eventbrite, as well as a delegate information form you must fill.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODERATOR SECTION -->
+            <!-- <div class="moderator-section">
                 <div class="moderator-icon">
                     <i class="fas fa-user-tie"></i>
                 </div>
