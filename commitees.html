@@ -252,8 +252,8 @@
             transform-style: preserve-3d;
         }
 
-        /* Desktop: hover to flip */
-        @media (hover: hover) {
+        /* Desktop: hover to flip (only on devices with hover capability) */
+        @media (hover: hover) and (min-width: 769px) {
             .flip-card:hover .flip-card-inner {
                 transform: rotateY(180deg);
             }
@@ -262,6 +262,13 @@
         /* Mobile/Touch: tap to flip */
         .flip-card.flipped .flip-card-inner {
             transform: rotateY(180deg);
+        }
+        
+        /* Disable hover on mobile */
+        @media (max-width: 768px) {
+            .flip-card:hover .flip-card-inner {
+                transform: none;
+            }
         }
 
         .flip-card-front,
@@ -341,14 +348,21 @@
         }
 
         /* Better mobile touch feedback */
-        @media (hover: none) {
+        @media (max-width: 768px) {
             .flip-card {
-                -webkit-tap-highlight-color: transparent;
+                -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
                 touch-action: manipulation;
+                user-select: none;
             }
             
-            .flip-card:active {
-                opacity: 0.9;
+            .flip-card:active .flip-card-front {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+            
+            /* Make it obvious cards are tappable on mobile */
+            .flip-card-front {
+                cursor: pointer;
             }
         }
 
@@ -597,12 +611,12 @@
             }
             
             /* Change hint text for mobile */
-            .flip-hint span::before {
-                content: 'Tap for details';
+            .flip-hint span {
+                display: none;
             }
             
-            .flip-hint span {
-                font-size: 0;
+            .flip-hint::after {
+                content: 'Tap for details';
             }
 
             .info-grid {
@@ -906,60 +920,62 @@
             });
         });
 
-        // Mobile tap to flip - improved for touch devices
+        // Flip card functionality - works on both mobile and desktop
+        function checkMobile() {
+            return window.matchMedia('(hover: none)').matches || window.innerWidth <= 768;
+        }
+        
         document.querySelectorAll('.flip-card').forEach(card => {
-            let touchStartTime;
-            let touchStartX;
-            let touchStartY;
-            
-            // Handle touch start
-            card.addEventListener('touchstart', function(e) {
-                touchStartTime = Date.now();
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-            }, { passive: true });
-            
-            // Handle touch end (tap)
-            card.addEventListener('touchend', function(e) {
-                const touchEndTime = Date.now();
-                const touchEndX = e.changedTouches[0].clientX;
-                const touchEndY = e.changedTouches[0].clientY;
-                
-                // Check if it was a tap (not a swipe)
-                const timeDiff = touchEndTime - touchStartTime;
-                const distanceX = Math.abs(touchEndX - touchStartX);
-                const distanceY = Math.abs(touchEndY - touchStartY);
-                
-                if (timeDiff < 300 && distanceX < 10 && distanceY < 10) {
+            // On mobile/touch devices, use click to toggle flip
+            card.addEventListener('click', function(e) {
+                // Check if mobile at the time of click
+                if (checkMobile()) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    
                     // Close all other cards
                     document.querySelectorAll('.flip-card').forEach(otherCard => {
                         if (otherCard !== this) {
                             otherCard.classList.remove('flipped');
                         }
                     });
+                    
                     // Toggle this card
                     this.classList.toggle('flipped');
                 }
             });
             
-            // Fallback for devices that don't support touch events
-            card.addEventListener('click', function(e) {
-                // Only flip on mobile/tablet (for non-touch click events)
-                if (window.innerWidth <= 1024 || window.matchMedia('(hover: none)').matches) {
-                    // Check if touch events are not supported
-                    if (!('ontouchstart' in window)) {
-                        e.preventDefault();
-                        // Close all other cards
-                        document.querySelectorAll('.flip-card').forEach(otherCard => {
-                            if (otherCard !== this) {
-                                otherCard.classList.remove('flipped');
-                            }
-                        });
-                        // Toggle this card
-                        this.classList.toggle('flipped');
+            // Also listen for touchend as a backup
+            card.addEventListener('touchend', function(e) {
+                // Prevent the click event from firing
+                e.preventDefault();
+                
+                // Close all other cards
+                document.querySelectorAll('.flip-card').forEach(otherCard => {
+                    if (otherCard !== this) {
+                        otherCard.classList.remove('flipped');
                     }
-                }
+                });
+                
+                // Toggle this card
+                this.classList.toggle('flipped');
+            }, { passive: false });
+        });
+        
+        // Close flipped cards when clicking/tapping outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.flip-card')) {
+                document.querySelectorAll('.flip-card.flipped').forEach(card => {
+                    card.classList.remove('flipped');
+                });
+            }
+        });
+        
+        // Handle window resize (device rotation)
+        window.addEventListener('resize', function() {
+            // Remove all flipped states on resize
+            document.querySelectorAll('.flip-card.flipped').forEach(card => {
+                card.classList.remove('flipped');
             });
         });
 
