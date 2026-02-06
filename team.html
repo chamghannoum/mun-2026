@@ -1,319 +1,743 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Meet the UoBDMUN Team - Secretariat, Marketing, and Departments">
+    <meta name="author" content="UoBDMUN">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
+    <title>Our Team | UoBDMUN 2026</title>
 
-    <title>UoBDMUN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        :root {
+            --primary-blue: #1e3a5f;
+            --secondary-blue: #2d5a8c;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e7c3;
+            --dark-navy: #0f1d2e;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+            --gradient-accent: linear-gradient(135deg, #d4af37 0%, #f4e7c3 100%);
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.15);
+        }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
+        /* ===================== HEADER ===================== */
+        .header-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
 
-TemplateMo 569 Edu Meeting
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-https://templatemo.com/tm-569-edu-meeting
+        .logo img {
+            height: 60px;
+        }
 
--->
-  </head>
+        .nav {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav li a:hover::after,
+        .nav li a.active::after {
+            width: 100%;
+        }
+
+        .nav li a:hover,
+        .nav li a.active {
+            color: var(--primary-blue);
+        }
+
+        .menu-trigger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-trigger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--primary-blue);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-trigger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .menu-trigger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-trigger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-6px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 999;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu ul li {
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .mobile-menu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu ul li a {
+            display: block;
+            padding: 1rem 5%;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu ul li a:hover,
+        .mobile-menu ul li a.active {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+            padding-left: 7%;
+        }
+
+        /* ===================== TEAM SECTIONS ===================== */
+        .team-section {
+            margin-top: 80px;
+            padding: 100px 5% 80px;
+            background: var(--white);
+        }
+
+        .team-section.alt-bg {
+            background: var(--light-bg);
+        }
+
+        .team-section.blue-bg {
+            background: var(--gradient-primary);
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--white);
+            color: var(--accent-gold);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .blue-bg .section-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .blue-bg .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .blue-bg .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Group Photo */
+        .group-photo-container {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .group-photo {
+            max-width: 800px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .team-grid.two-col-centered {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 900px;
+            margin: 3rem auto 0;
+            gap: 4rem;
+        }
+
+        /* Team Card */
+        .team-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .blue-bg .team-card {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-grid.two-col-centered .team-photo-wrapper {
+            height: 400px;
+        }
+
+        .team-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-photo-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 2rem 1.5rem;
+        }
+
+        .team-grid.two-col-centered .team-info {
+            padding: 2.5rem 2rem;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-grid.two-col-centered .team-role {
+            font-size: 1rem;
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-grid.two-col-centered .team-name {
+            font-size: 1.6rem;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--accent-gold);
+            color: var(--dark-navy);
+            transform: translateY(-5px);
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .team-grid.three-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid.two-col-centered {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .menu-trigger {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .team-section {
+                padding: 80px 5% 60px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .team-grid,
+            .team-grid.three-col,
+            .team-grid.two-col-centered {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .team-photo-wrapper,
+            .team-grid.two-col-centered .team-photo-wrapper {
+                height: 350px;
+            }
+
+            .group-photo-container {
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
+</head>
 
 <body>
 
-  <!-- Sub Header -->
+    <!-- HEADER -->
+    <header class="header-area">
+        <nav class="main-nav">
+            <a href="index.html" class="logo">
+                <img src="assets/images/main_logo.png" alt="UoBDMUN Logo">
+            </a>
+            <ul class="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="commitees.html">Committees</a></li>
+                <li><a href="team.html" class="active">Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="FAQ.html">FAQs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <button class='menu-trigger'>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="commitees.html">Committees</a></li>
+                <li><a href="team.html" class="active">Team</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="FAQ.html">FAQs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- MEET THE TEAM INTRO SECTION -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="section-header">
+                <div class="section-tag">Our Leadership</div>
+                <h1 class="section-title">Meet the Team</h1>
+                <p class="section-subtitle">
+                    Meet the dedicated individuals behind UoBDMUN 2026, working tirelessly to create an unforgettable experience for all delegates.
+                </p>
+            </div>
 
- <!-- ***** Header Area Start ***** -->
- <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                      <img src="assets/images/main_logo.png" alt="Edu Meeting Logo">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li ><a href="index.html" >Home</a></li>
-                        <li><a href="schedule.html" >Schedule</a></li>
-                       <li ><a href="commitees.html" >Committees</a></li> 
-                       <li ><a href="team.html" class="active">team</a></li> 
-                        <!-- <li class="has-sub">
-                            <a href="javascript:void(0)">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="meetings.html">Upcoming Meetings</a></li>
-                                <li><a href="meeting-details.html">Meeting Details</a></li>
-                            </ul>
-                        </li> -->
-                        <!-- <li class="has-sub">
-                          <a href="javascript:void(0)">Register</a>
-                          <ul class="sub-menu">
-                              <li><a href="https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&token=5c0bd7571d504305bd286b14329edf86&id=z8oksN7eQUKhXDyX1VPp88hM4G62d1pCpiFpYBYbX4VUMlhIWEJNMUdIWDJETEVPNE9VM1lESU1VTC4u ">Institutional</a></li>
-                              <li><a href="https://forms.gle/jvmwExzPTDpdAd7h9">Individual</a></li>
-                              <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd_h227jt1_fOnu5YC2NQ-oOW1rGlsGfO6LW3djD4p_RZNELA/viewform ">Moderator</a></li> 
-                          </ul>
-                      </li> -->
-                       <li ><a href="register.html" >Register</a></li> 
-                        <li ><a href="FAQ.html">FAQs</a></li> 
-                        <li ><a href="contact.html">Contact Us</a></li> 
-                    </ul>        
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+            <!-- Group Picture -->
+            <div class="group-photo-container">
+                <img src="assets/images/teampic.jpeg" alt="UoBDMUN Team" class="group-photo">
             </div>
         </div>
-    </div>
-  </header>
-  <section class="filler" id="filler"></section>
-  <section class="meet-the-team py-5">
-    <div class="container">
-      <!-- Meet the Team Heading -->
-      <div class="row text-center mb-4">
-        <div class="col-12">
-          <h2 class="section-title">Meet the Team</h2>
-        </div>
-      </div>
-  
-      <!-- Group Picture -->
-      <div class="row text-center mb-4">
-        <div class="col-12">
-          <img src="assets/images/team.jpeg" alt="Group Picture" class="group-picture">
-        </div>
-      </div>
-  
-      <!-- Secretariat Heading -->
-      <div class="row text-center mb-4">
-        <div class="col-12">
-          <h2 class="section-subtitle">Secretariat</h2>
-        </div>
-      </div>
-  
-      <!-- Secretariat Row -->
-      <div class="row text-center">
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-              <img src="assets/images/karam.jpeg" alt="Secretary General">
-            </div>
-            <h5>Secretary General</h5>
-            <p>Karam Abu Odeh</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-              <img src="assets/images/Ameer.jpeg" alt="Deputy Secretary General">
-            </div>
-            <h5>Deputy Secretary General</h5>
-            <p>Ameer Alhashemi</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-              <img src="assets/images/hamza.jpeg" alt="Head of Committees">
-            </div>
-            <h5>Head of Committees</h5>
-            <p>Hamzah Jeha</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-              <img src="assets/images/zurab.jpeg" alt="Head of Research">
-            </div>
-            <h5>Head of Research</h5>
-            <p>Zurab Gabuniia</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  
-  <section class="marketing-section py-5">
-    <div class="container">
-      <!-- Marketing and Social Media Heading -->
-      <div class="row text-center mb-4">
-        <div class="col-12">
-          <h2 class="section-title text-white">Marketing and Social Media</h2>
-        </div>
-      </div>
-      <!-- Marketing Row -->
-      <div class="row text-center">
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/fayrouz.jpeg" alt="Head of Research">
-            </div>
-            <h5 class="text-white">Head of Marketing and Social Media</h5>
-            <p class="text-white">Fayrouz Allam</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/mira.jpeg" alt="Head of Research">
-            </div>
-            <h5 class="text-white"> Director of Marketing</h5>
-            <p class="text-white">Mira Adhami</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/Nejoud.jpeg" alt="Head of Research">
-            </div>
-            <h5 class="text-white">Director of Social Media & Design</h5>
-            <p class="text-white">Nejoud Alobied</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <section class="departments-section py-5">
-    <div class="container">
-      <!-- Departments Heading -->
-      <div class="row text-center mb-4">
-        <div class="col-12">
-          <h2 class="section-title">Departments</h2>
-        </div>
-      </div>
-      <!-- Departments Row -->
-      <div class="row text-center">
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/Dana.jpeg" alt="Head of Research">
-            </div>
-            <h5>Head of Relations</h5>
-            <p>Dana Nassar</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/Layan.jpeg" alt="Head of Research">
-            </div>
-            <h5>Head of Volunteers</h5>
-            <p>Layan Hadi</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/sham.jpeg" alt="Head of Research">
-            </div>
-            <h5>Head of Finance</h5>
-            <p>Sham Muazzen</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-          <div class="team-member">
-            <div class="team-photo">
-                <img src="assets/images/Surya.jpeg" alt="Head of Research">
-            </div>
-            <h5>Head of IT</h5>
-            <p>Surya Datla</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer">
-        <p>Copyright © 2024 UOBDMUN, Ltd. All Rights Reserved.</p>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/uobd.mun/profilecard/?igsh=MXQ5NzZleHl3b2J5bg==" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A103223958&keywords=uobdmun&origin=RICH_QUERY_SUGGESTION&position=0&searchId=cf3a014a-8c5c-4c68-a9f4-71466239a8e6&sid=2ri&spellCorrectionEnabled=false" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </div>
-      
-  </section>
-  
+    </section>
 
+    <!-- SECRETARIAT SECTION -->
+    <section class="team-section blue-bg">
+        <div class="team-container">
+            <div class="section-header">
+                <div class="section-tag">Leadership</div>
+                <h2 class="section-title">Secretariat</h2>
+            </div>
 
+            <div class="team-grid two-col-centered">
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/secgen-hamzah.jpeg" alt="Hamzah Jeha">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Secretary General</div>
+                        <h3 class="team-name">Hamzah Jeha</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/depsecgen-zurab.jpeg" alt="Zurab Gabuniia">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Deputy Secretary General</div>
+                        <h3 class="team-name">Zurab Gabuniia</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITTEES & RESEARCH DEPARTMENT SECTION -->
+    <section class="team-section alt-bg">
+        <div class="team-container">
+            <div class="section-header">
+                <div class="section-tag">Committees & Research</div>
+                <h2 class="section-title">Committees & Research Department</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofcom-aslan.jpeg" alt="Aslan Halawa">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Committees</div>
+                        <h3 class="team-name">Aslan Halawa</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/dirofcomt-adham.jpeg" alt="Adham El Hawary">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Director of Committees</div>
+                        <h3 class="team-name">Adham El Hawary</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofres-mariam.jpeg" alt="Mariam Ghannoum">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Research</div>
+                        <h3 class="team-name">Mariam Ghannoum</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/dirofres-ahamd.jpeg" alt="Ahmad Akkad">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Director of Research</div>
+                        <h3 class="team-name">Ahmad Akkawi</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKETING AND SOCIAL MEDIA SECTION -->
+    <section class="team-section">
+        <div class="team-container">
+            <div class="section-header">
+                <div class="section-tag">Media and Design</div>
+                <h2 class="section-title">Media and Design Department</h2>
+            </div>
+
+            <div class="team-grid three-col">
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofmed-nejoud.jpeg" alt="Nejoud Alobied">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Media and Design</div>
+                        <h3 class="team-name">Nejoud Alobied</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/dirofmed-mariam.jpeg" alt="Mariam Abdalrazak">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Director of Media and Design</div>
+                        <h3 class="team-name">Mariam Abdalrazak</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/dirofmed-jude.jpeg" alt="Jude Alassar">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Director of Media and Design</div>
+                        <h3 class="team-name">Jude Alassar</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPARTMENTS SECTION -->
+    <section class="team-section alt-bg">
+        <div class="team-container">
+            <div class="section-header">
+                <div class="section-tag">Operations</div>
+                <h2 class="section-title">Departments</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofmark-mira.jpeg" alt="Mira Jakoub">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Marketing</div>
+                        <h3 class="team-name">Mira Jakoub</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofrel-raneem.jpeg" alt="Raneem Nasrallah">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Relations</div>
+                        <h3 class="team-name">Raneem Nasrallah</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headoffin-sham.jpeg" alt="Sham Al Muazzen">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Finance</div>
+                        <h3 class="team-name">Sham Al Muazzen</h3>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-photo-wrapper">
+                        <img src="assets/images/headofvol-zaynah.jpeg" alt="Zaynah Khawaja">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-role">Head of Volunteers and HR</div>
+                        <h3 class="team-name">Zaynah Khawaja</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
   
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://www.instagram.com/uobd.mun/" target="_blank" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/company/uobdmun/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 UoBDMUN, University of Birmingham Dubai. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/lightbox.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/video.js"></script>
-  <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script>
-      //according to loftblog tut
-      $('.nav li:first').addClass('active');
+    <script>
+        // Mobile menu toggle
+        const menuTrigger = document.querySelector('.menu-trigger');
+        const mobileMenu = document.querySelector('.mobile-menu');
 
-      var showSection = function showSection(section, isAnimate) {
-        var
-        direction = section.replace(/#/, ''),
-        reqSection = $('.section').filter('[data-section="' + direction + '"]'),
-        reqSectionPos = reqSection.offset().top - 0;
-
-        if (isAnimate) {
-          $('body, html').animate({
-            scrollTop: reqSectionPos },
-          800);
-        } else {
-          $('body, html').scrollTop(reqSectionPos);
-        }
-
-      };
-
-      var checkSection = function checkSection() {
-        $('.section').each(function () {
-          var
-          $this = $(this),
-          topEdge = $this.offset().top - 80,
-          bottomEdge = topEdge + $this.height(),
-          wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var
-            currentId = $this.data('section'),
-            reqLink = $('a').filter('[href*=\\#' + currentId + ']');
-            reqLink.closest('li').addClass('active').
-            siblings().removeClass('active');
-          }
+        menuTrigger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         });
-      };
 
-      $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
-        e.preventDefault();
-        showSection($(this).attr('href'), true);
-      });
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuTrigger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
 
-      $(window).scroll(function () {
-        checkSection();
-      });
-
-      
-  </script>
-</body>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header-area');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
 
 </body>
 </html>
