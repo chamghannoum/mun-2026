@@ -39,15 +39,6 @@
             line-height: 1.6;
             overflow-x: hidden;
             background: var(--white);
-            /* Touch detection flag - assume not touch */
-            --touch: 0;
-        }
-        
-        /* If touch device, flip the touch flag to 1 */
-        @media (pointer: coarse) {
-            body {
-                --touch: 1;
-            }
         }
 
         /* ===================== HEADER ===================== */
@@ -251,8 +242,6 @@
             perspective: 1000px;
             height: 400px;
             cursor: pointer;
-            /* Initially not flipped, so --flip flag is 0 */
-            --flip: 0;
         }
 
         .flip-card-inner {
@@ -260,19 +249,19 @@
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            /* Use --flip flag to control rotation */
-            transform: rotateY(calc(var(--flip) * 180deg));
             transition: transform 0.6s ease-out;
         }
 
-        /* On hover, flip only if NOT on touch device (--touch is 0) */
-        .flip-card:hover {
-            --flip: calc(1 - var(--touch));
+        /* Desktop hover - only works on devices that support hover */
+        @media (hover: hover) {
+            .flip-card:hover .flip-card-inner {
+                transform: rotateY(180deg);
+            }
         }
 
-        /* If rotated class applied via JS (for touch devices), flip */
-        .flip-card.rotated {
-            --flip: 1;
+        /* Mobile tap - works when JS adds this class */
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
         }
 
         .flip-card-front,
@@ -352,15 +341,16 @@
         }
 
         /* Better mobile touch feedback */
-        @media (pointer: coarse) {
+        @media (max-width: 768px) {
             .flip-card {
-                -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
+                -webkit-tap-highlight-color: rgba(212, 175, 55, 0.3);
                 touch-action: manipulation;
                 user-select: none;
             }
             
             .flip-card:active {
-                opacity: 0.95;
+                transform: scale(0.98);
+                transition: transform 0.1s;
             }
         }
 
@@ -607,10 +597,8 @@
             .flip-hint {
                 font-size: 0.8rem;
             }
-        }
-        
-        /* Change hint text for touch devices */
-        @media (pointer: coarse) {
+            
+            /* Change hint text for mobile */
             .flip-hint span {
                 display: none;
             }
@@ -920,40 +908,45 @@
             });
         });
 
-        // Get the touch flag from CSS
-        const TOUCH = +getComputedStyle(document.body).getPropertyValue('--touch');
-
-        // Helper function to find card element
-        function getCard(el) {
-            // Gone up too far, return null
-            if (el === document.body || !el) return null;
-            // Found a card, return it
-            if (el.classList.contains('flip-card')) return el;
-            // Try parent
-            return getCard(el.parentNode);
-        }
-
-        // Only add click handler if on touch device
-        if (TOUCH) {
-            addEventListener('click', e => {
-                let card = getCard(e.target);
-                if (card) {
+        // Simple flip card handler for ALL devices
+        // On mobile/tablet, this provides tap-to-flip
+        // On desktop with hover support, this acts as backup
+        document.querySelectorAll('.flip-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                console.log('Card clicked!'); // Debug log
+                
+                // If device doesn't support hover, or is narrow screen, use click to flip
+                const isNarrowScreen = window.innerWidth <= 768;
+                const hasNoHover = !window.matchMedia('(hover: hover)').matches;
+                
+                if (isNarrowScreen || hasNoHover) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    console.log('Flipping card'); // Debug log
+                    
                     // Close all other cards
-                    document.querySelectorAll('.flip-card').forEach(otherCard => {
+                    document.querySelectorAll('.flip-card').forEach(function(otherCard) {
                         if (otherCard !== card) {
-                            otherCard.classList.remove('rotated');
+                            otherCard.classList.remove('is-flipped');
                         }
                     });
+                    
                     // Toggle this card
-                    card.classList.toggle('rotated');
-                } else {
-                    // Clicked outside, close all cards
-                    document.querySelectorAll('.flip-card.rotated').forEach(card => {
-                        card.classList.remove('rotated');
-                    });
+                    card.classList.toggle('is-flipped');
+                    console.log('Card has is-flipped:', card.classList.contains('is-flipped')); // Debug log
                 }
             });
-        }
+        });
+        
+        // Close cards when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.flip-card')) {
+                document.querySelectorAll('.flip-card.is-flipped').forEach(function(card) {
+                    card.classList.remove('is-flipped');
+                });
+            }
+        });
 
         // Header scroll effect
         window.addEventListener('scroll', function() {
