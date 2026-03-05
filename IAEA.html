@@ -85,97 +85,219 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
-        .committee-detail {
+        .committee-hero {
             margin-top: 80px;
-            padding: 100px 5%;
+            padding: 100px 5% 80px;
             background: var(--gradient-primary);
-            min-height: 100vh;
+            text-align: center;
         }
 
-        .detail-container {
-            max-width: 900px;
-            margin: 0 auto;
+        .logo-emblem {
+            width: 150px;
+            height: 150px;
             background: var(--white);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: var(--shadow-lg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            border: 3px solid rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 0 8px rgba(255,255,255,0.1), 0 12px 40px rgba(0,0,0,0.3);
+            padding: 18px;
         }
 
         .committee-logo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .committee-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
             margin-bottom: 0.5rem;
+            line-height: 1.1;
         }
 
         .committee-fullname {
             font-size: 1.1rem;
-            color: var(--text-light);
-            text-align: center;
+            color: rgba(255, 255, 255, 0.75);
             font-style: italic;
             margin-bottom: 2rem;
         }
 
-        .section-divider {
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-accent);
-            margin: 2rem auto;
-            border-radius: 2px;
-        }
-
-        .detail-section {
-            margin-bottom: 2rem;
-        }
-
-        .detail-section h3 {
-            font-size: 1.3rem;
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1.5px solid var(--accent-gold);
+            border-radius: 50px;
+            color: var(--accent-gold);
+            font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary-blue);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            padding: 80px 5%;
+        }
+
+        .content-section.alt-bg {
+            background: var(--light-bg);
+        }
+
+        .section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--light-gold);
+            color: var(--accent-gold);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
-        .detail-section p {
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1.25rem;
+        }
+
+        .section-body {
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.9;
             color: var(--text-light);
         }
 
-        .topic-box {
-            background: var(--light-bg);
-            border-left: 4px solid var(--accent-gold);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 1rem;
+        .topic-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--accent-gold);
+            margin-top: 1.5rem;
         }
 
-        .topic-box p {
-            font-weight: 500;
-            color: var(--text-dark);
+        .topic-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .topic-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            line-height: 1.6;
+        }
+
+        .chairs-section {
+            padding: 80px 5%;
+            background: var(--gradient-primary);
+        }
+
+        .chairs-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .chairs-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .chairs-header .section-tag {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+        }
+
+        .chairs-header .section-heading {
+            color: var(--white);
+        }
+
+        .chairs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .chair-card {
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .chair-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .chair-photo-wrapper {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .chair-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .chair-card:hover .chair-photo-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .chair-info {
+            padding: 1.5rem 1rem;
+        }
+
+        .chair-role {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+        }
+
+        .chair-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-blue);
         }
 
         @media (max-width: 768px) {
-            .detail-container {
-                padding: 2rem 1.5rem;
-            }
+            .committee-title { font-size: 2.5rem; }
+            .committee-logo { width: 100px; height: 100px; }
+            .chairs-grid { gap: 1.5rem; }
+            .section-heading { font-size: 1.6rem; }
+        }
 
-            .committee-title {
-                font-size: 2rem;
-            }
-
-            .committee-logo {
-                width: 120px;
-                height: 120px;
-            }
+        @media (max-width: 480px) {
+            .chairs-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -194,26 +316,59 @@
         </nav>
     </header>
 
-    <section class="committee-detail">
-        <div class="detail-container">
+    <section class="committee-hero">
+        <div class="logo-emblem">
             <img src="assets/images/IAEA-MUN.png" alt="IAEA" class="committee-logo">
-            
-            <h1 class="committee-title">IAEA</h1>
-            <p class="committee-fullname">International Atomic Energy Agency</p>
-            
-            <div class="section-divider"></div>
-            
-            <div class="detail-section">
-                <h3>About the Committee</h3>
-                <p>
-                    The IAEA promotes peaceful uses of nuclear energy while preventing the spread of nuclear weapons, ensuring nuclear safety and security worldwide.
-                </p>
+        </div>
+        <h1 class="committee-title">IAEA</h1>
+        <p class="committee-fullname">International Atomic Energy Agency</p>
+    </section>
+
+    <section class="content-section">
+        <div class="section-inner">
+            <span class="section-tag">About</span>
+            <h2 class="section-heading">About the Committee</h2>
+            <p class="section-body">
+                The IAEA promotes peaceful uses of nuclear energy while preventing the spread of nuclear weapons, ensuring nuclear safety and security worldwide.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section alt-bg">
+        <div class="section-inner">
+            <span class="section-tag">2026 Topic</span>
+            <h2 class="section-heading">Committee Topic</h2>
+            <div class="topic-card">
+                <div class="topic-label">Resolution Topic</div>
+                <p class="topic-text">Safeguarding the Right to Peaceful Nuclear Energy Amid Global Security Concerns</p>
             </div>
-            
-            <div class="detail-section">
-                <h3>2026 Topic</h3>
-                <div class="topic-box">
-                    <p>Safeguarding the Right to Peaceful Nuclear Energy Amid Global Security Concerns</p>
+        </div>
+    </section>
+
+    <section class="chairs-section">
+        <div class="chairs-inner">
+            <div class="chairs-header">
+                <span class="section-tag">Leadership</span>
+                <h2 class="section-heading">Committee Chairs</h2>
+            </div>
+            <div class="chairs-grid">
+                <div class="chair-card">
+                    <div class="chair-photo-wrapper">
+                        <img src="assets/images/Daniel2.png" alt="Daniel Shihat">
+                    </div>
+                    <div class="chair-info">
+                        <div class="chair-role">Chair</div>
+                        <p class="chair-name">Daniel Shihat</p>
+                    </div>
+                </div>
+                <div class="chair-card">
+                    <div class="chair-photo-wrapper">
+                        <img src="assets/images/Tia2.png" alt="Tia Koulaylat">
+                    </div>
+                    <div class="chair-info">
+                        <div class="chair-role">Chair</div>
+                        <p class="chair-name">Tia Koulaylat</p>
+                    </div>
                 </div>
             </div>
         </div>
