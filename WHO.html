@@ -299,6 +299,66 @@
         @media (max-width: 480px) {
             .chairs-grid { grid-template-columns: 1fr; }
         }
+
+        /* ===================== BACKGROUND GUIDE ===================== */
+        .bg-guide-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .bg-guide-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bg-guide-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-md);
+            border: 1.5px solid var(--light-gold);
+            margin-top: 2rem;
+        }
+
+        .bg-guide-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .bg-guide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .bg-guide-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.9rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(30, 58, 95, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.4);
+        }
     </style>
 </head>
 
@@ -370,6 +430,22 @@
                         <p class="chair-name">Joury Sahrij</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BACKGROUND GUIDE -->
+    <section class="bg-guide-section">
+        <div class="bg-guide-inner">
+            <span class="section-tag">Resources</span>
+            <h2 class="section-heading">Background Guide</h2>
+            <div class="bg-guide-card">
+                <div class="bg-guide-icon"><i class="fas fa-file-pdf"></i></div>
+                <h3 class="bg-guide-title">WHO Background Guide 2026</h3>
+                <p class="bg-guide-desc">Download the official background guide to prepare for your committee session.</p>
+                <a href="assets/Background Guide - WHO.pdf" download class="download-btn">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
             </div>
         </div>
     </section>
